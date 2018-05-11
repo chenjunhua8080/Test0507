@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/test
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  devtools:
+    restart:
+      enabled: false
+      exclude: WEB-INF/**
+wechat:
+  appid: wx9821aff994e422d9
+  appsecret: ed77218b9de588780a92c8cd4da503d7
+  signURL: http://1ge9881707.51mypc.cn/checkSignature
+  tokenKey: MyWeChatApp
+  domain: http://cjh.nat300.top/

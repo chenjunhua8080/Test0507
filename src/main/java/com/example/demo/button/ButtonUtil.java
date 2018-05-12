@@ -1,6 +1,6 @@
 package com.example.demo.button;
 
-import com.alibaba.fastjson.JSONObject;
+import net.sf.json.JSONObject;
 
 public class ButtonUtil {
 
@@ -86,7 +86,7 @@ public class ButtonUtil {
           */  
          MenuButton menu = new MenuButton();  
          menu.setButton(new Button[] { mainBtn1, mainBtn2, mainBtn3 });  
-         return JSONObject.toJSON(menu).toString();
+         return JSONObject.fromObject(menu).toString();
 	}
 
 }

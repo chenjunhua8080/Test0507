@@ -47,9 +47,7 @@ public class SignControl {
 	public String message(HttpServletRequest request) throws Exception {
 		System.out.println("收到消息/事件...");
 		Map<String, Object> map = XmlUtil.parseXml(request);
-		System.err.println(map);
 		String resp = MessageUtil.build(map);
-		System.err.println(resp);
 		return resp;
 	}
 }

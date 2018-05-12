@@ -117,8 +117,25 @@ public class Api {
 	 */
 	public static final String user_list = "https://api.weixin.qq.com/cgi-bin/user/get?access_token=ACCESS_TOKEN&next_openid=NEXT_OPENID";
 
+	/**
+	 * http请求方式: GET<br/>
+	 */
+	public static final String media_count = "https://api.weixin.qq.com/cgi-bin/material/get_materialcount?access_token=ACCESS_TOKEN";
 	
-	
-	
+	/**
+	 * http请求方式: POST<br/>
+	 * 参数说明<br/>
+	 * 参数	是否必须	说明<br/>
+	 * type	是	素材的类型，图片（image）、视频（video）、语音 （voice）、图文（news）<br/>
+	 * offset	是	从全部素材的该偏移位置开始返回，0表示从第一个素材 返回<br/>
+	 * count	是	返回素材的数量，取值在1到20之间<br/>
+	 * 调用示例<br/>
+	 * {<br/>
+	 *     "type":TYPE,<br/>
+	 *     "offset":OFFSET,<br/>
+	 *     "count":COUNT<br/>
+	 * }<br/>
+	 */
+	public static final String media_list = "https://api.weixin.qq.com/cgi-bin/material/batchget_material?access_token=ACCESS_TOKEN";
 	
 }

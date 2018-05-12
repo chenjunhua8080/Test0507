@@ -11,6 +11,9 @@ import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
+import net.sf.json.JSONObject;
+import net.sf.json.xml.XMLSerializer;
+
 public class XmlUtil {
 
 	public static Map<String, Object> parseXml(HttpServletRequest request) throws Exception {
@@ -36,6 +39,20 @@ public class XmlUtil {
 		inputStream.close();
 		inputStream = null;
 		return map;
+	}
+	
+    /**
+     * xmlSerializer好像默认支持CDATA,测试的时候转成lt gt<br/>
+     * @param json
+     * @return
+     */
+	public static String toXml(JSONObject json) {
+    	XMLSerializer xmlSerializer = new XMLSerializer();
+    	xmlSerializer.setRootName("xml");
+    	xmlSerializer.setTypeHintsEnabled(false);
+    	String xml = xmlSerializer.write(json);
+    	System.err.println("xmlSerializer解析出来的数据："+xml);
+		return xml;
 	}
 
 }

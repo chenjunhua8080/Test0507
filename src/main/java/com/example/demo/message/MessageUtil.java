@@ -2,6 +2,7 @@ package com.example.demo.message;
 
 import java.util.Map;
 
+import com.example.demo.xml.XmlUtil;
 
 import net.sf.json.JSONObject;
 import net.sf.json.xml.XMLSerializer;
@@ -27,7 +28,7 @@ public class MessageUtil {
                 break;
             case MessageType.image:
                 //处理图片消息
-                responseMessage = buildTextMessage(map);
+                responseMessage = buildTextMessage(map,true);
                 break;
             case MessageType.voice:
                 //处理语音消息
@@ -81,27 +82,27 @@ public class MessageUtil {
          <MsgId>1234567890123456</MsgId>
          </xml>
          */
-        return String.format(
+        String resp=String.format(
                 "<xml>" +
                         "<ToUserName><![CDATA[%s]]></ToUserName>" +
                         "<FromUserName><![CDATA[%s]]></FromUserName>" +
                         "<CreateTime>%s</CreateTime>" +
-                        "<MsgType><![CDATA[text]]></MsgType>" +
-                        "<Content><![CDATA[%s]]></Content>" +
+                        "<MsgType><![CDATA[image]]></MsgType>" +
+                        "<Image><MediaId><![CDATA[%s]]></MediaId></Image>" +
                         "</xml>",
-                fromUserName, toUserName, map.get("CreateTime"), map.get("MsgType")+",有空常来啊!");
+                fromUserName, toUserName, map.get("CreateTime"), map.get("MediaId"));
+        System.out.println(resp);
+        return resp;
     }
     
     private static String buildTextMessage(Map<String, Object> map) {
-		return pageData(map);
-	}
-    
-    private static String pageData(Map<String, Object> map) {
+    	System.err.println(map);
     	JSONObject json=JSONObject.fromObject(map);
-    	XMLSerializer xmlSerializer = new XMLSerializer();
-    	String xml = xmlSerializer.write(json);
-		return xml;
+    	String replace = json.toString().replace("ToUserName", "ccc").replace("FromUserName", "ToUserName").replace("ccc", "FromUserName");
+    	System.out.println(replace);
+		return XmlUtil.toXml(JSONObject.fromObject(replace));
 	}
+
     
 
 }

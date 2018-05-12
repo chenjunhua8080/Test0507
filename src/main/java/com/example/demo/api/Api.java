@@ -60,4 +60,65 @@ public class Api {
 	 * json:{"openid_list":["OPENID1”,” OPENID2”]}<br/>
 	 */
 	public static final String set_black_rollback = "https://api.weixin.qq.com/cgi-bin/tags/members/batchunblacklist?access_token=ACCESS_TOKEN";
+	
+	/**
+	 * http请求方式: POST（请使用https协议）<br/>
+	 * 参数	说明<br/>
+	 * access_token	调用接口凭证<br/>
+	 * openid	用户标识<br/>
+	 * remark	新的备注名，长度必须小于30字符<br/>
+	 * POST数据例子：<br/>
+	 * {<br/>
+	 *     "openid":"oDF3iY9ffA-hqb2vVvbr7qxf6A0Q",<br/>
+	 *     "remark":"pangzi"<br/>
+	 * }<br/>
+	 */
+	public static final String set_remark = "https://api.weixin.qq.com/cgi-bin/user/info/updateremark?access_token=ACCESS_TOKEN";
+	
+	
+	/**
+	 * http请求方式: GET<br/>
+	 * 参数	是否必须	说明<br/>
+	 * access_token	是	调用接口凭证<br/>
+	 * openid	是	普通用户的标识，对当前公众号唯一0字符<br/>
+	 * lang	否	返回国家地区语言版本，zh_CN 简体，zh_TW 繁体，en 英语<br/>
+	 */
+	public static final String user_info = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=ACCESS_TOKEN&openid=OPENID&lang=zh_CN";
+
+	
+	/**
+	 * http请求方式: POST<br/>
+	 * 参数	是否必须	说明<br/>
+	 * access_token	是	调用接口凭证<br/>
+	 * openid	是	普通用户的标识，对当前公众号唯一0字符<br/>
+	 * lang	否	返回国家地区语言版本，zh_CN 简体，zh_TW 繁体，en 英语<br/>
+	 * POST数据示例<br/>
+	 * {<br/>
+	 *     "user_list": [<br/>
+	 *         {
+	 *             "openid": "otvxTs4dckWG7imySrJd6jSi0CWE", <br/>
+	 *             "lang": "zh_CN"<br/>
+	 *         }, <br/>
+	 *         {<br/>
+	 *             "openid": "otvxTs_JZ6SEiP0imdhpi50fuSZg", <br/>
+	 *             "lang": "zh_CN"<br/>
+	 *         }<br/>
+	 *     ]<br/>
+	 * }<br/>
+	 */
+	public static final String users_info = "https://api.weixin.qq.com/cgi-bin/user/info/batchget?access_token=ACCESS_TOKEN";
+	
+	
+	/**
+	 * http请求方式: GET<br/>
+	 * 参数	是否必须	说明<br/>
+	 * access_token	是	调用接口凭证<br/>
+	 * next_openid	是	第一个拉取的OPENID，不填默认从头开始拉取<br/>
+	 */
+	public static final String user_list = "https://api.weixin.qq.com/cgi-bin/user/get?access_token=ACCESS_TOKEN&next_openid=NEXT_OPENID";
+
+	
+	
+	
+	
 }

@@ -11,6 +11,7 @@ import com.example.demo.control.TokenControl;
 import com.example.demo.dao.TokenDao;
 import com.example.demo.entity.Token;
 
+
 @Component("TokenRunner")
 public class TokenRunner implements ApplicationRunner{
 	
@@ -20,25 +21,34 @@ public class TokenRunner implements ApplicationRunner{
 	@Autowired
 	private TokenDao tokenDao;
 	
-	@Override
-	public void run(ApplicationArguments args) throws Exception {
-		new Thread(new Runnable() {
-			@Override
-			public void run() {
-				while(true) {
-					try {
-						Token token = tokenDao.findByIdMax();
-						if (((new Date().getTime())-(token.getCreateDate().getTime()))>60*60*1000) {
+	Thread thread=new Thread(new Runnable() {
+		@Override
+		public void run() {
+			while(true) {
+				try {
+					Token token = tokenDao.findByIdMax();
+					if (token==null) {
+						tokenControl.getToken();
+						System.out.println("更新token...");
+					}else {
+						long time = new Date().getTime()-token.getCreateDate().getTime();
+						if (time>60*60*1000) {
 							tokenControl.getToken();
 							System.out.println("更新token...");
 						}
-						Thread.sleep(60*1000);
-					} catch (Exception e) {
-						e.printStackTrace();
 					}
+					Thread.sleep(30*60*1000);
+				} catch (Exception e) {
+					e.printStackTrace();
 				}
 			}
-		}).start();;
+		}
+	});
+
+
+	@Override
+	public void run(ApplicationArguments args) throws Exception {
+		thread.start();
 	}
 
 }

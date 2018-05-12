@@ -7,9 +7,8 @@ public class TextMessage extends Message{
 	public TextMessage() {
 	}
 
-	public TextMessage(String toUserName, String fromUserName, Integer createTime, String msgType, Integer msgId,
-			String content) {
-		super(toUserName, fromUserName, createTime, msgType, msgId);
+	public TextMessage(String toUserName, String fromUserName, Integer createTime, String msgType, String content) {
+		super(toUserName, fromUserName, createTime, msgType);
 		Content = content;
 	}
 
@@ -20,6 +19,4 @@ public class TextMessage extends Message{
 	public void setContent(String content) {
 		Content = content;
 	}
-	
-
 }

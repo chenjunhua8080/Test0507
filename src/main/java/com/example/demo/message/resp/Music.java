@@ -1,21 +1,12 @@
-package com.example.demo.message.req;
+package com.example.demo.message.resp;
 
-public class MusicMessage {
+public class Music {
 	
 	private String ThumbMediaId;
 	private String Title;
 	private String Description;
 	private String MusicURL;
 	private String HQMusicUrl;
-	public MusicMessage() {
-	}
-	public MusicMessage(String thumbMediaId, String title, String description, String musicURL, String hQMusicUrl) {
-		ThumbMediaId = thumbMediaId;
-		Title = title;
-		Description = description;
-		MusicURL = musicURL;
-		HQMusicUrl = hQMusicUrl;
-	}
 	public String getThumbMediaId() {
 		return ThumbMediaId;
 	}
@@ -44,6 +35,17 @@ public class MusicMessage {
 		return HQMusicUrl;
 	}
 	public void setHQMusicUrl(String hQMusicUrl) {
+		HQMusicUrl = hQMusicUrl;
+	}
+	
+	
+	public Music() {
+	}
+	public Music(String thumbMediaId, String title, String description, String musicURL, String hQMusicUrl) {
+		ThumbMediaId = thumbMediaId;
+		Title = title;
+		Description = description;
+		MusicURL = musicURL;
 		HQMusicUrl = hQMusicUrl;
 	}
 	

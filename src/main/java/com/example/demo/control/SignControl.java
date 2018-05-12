@@ -46,7 +46,7 @@ public class SignControl {
 	@PostMapping("/checkSignature")
 	public String message(HttpServletRequest request) throws Exception {
 		System.out.println("收到消息/事件...");
-		Map<String, Object> map = XmlUtil.parseXml(request);
+		Map<String, String> map = XmlUtil.parseXml(request);
 		String resp = MessageUtil.build(map);
 		return resp;
 	}

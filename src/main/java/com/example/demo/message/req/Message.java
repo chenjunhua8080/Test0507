@@ -4,15 +4,10 @@ public class Message {
 	
 	private String ToUserName;
 	private String FromUserName;
-	private Integer CreateTime;
+	private long CreateTime;
 	private String MsgType;
+	private long MsgId;
 	public Message() {
-	}
-	public Message(String toUserName, String fromUserName, Integer createTime, String msgType) {
-		ToUserName = toUserName;
-		FromUserName = fromUserName;
-		CreateTime = createTime;
-		MsgType = msgType;
 	}
 	public String getToUserName() {
 		return ToUserName;
@@ -26,10 +21,10 @@ public class Message {
 	public void setFromUserName(String fromUserName) {
 		FromUserName = fromUserName;
 	}
-	public Integer getCreateTime() {
+	public long getCreateTime() {
 		return CreateTime;
 	}
-	public void setCreateTime(Integer createTime) {
+	public void setCreateTime(long createTime) {
 		CreateTime = createTime;
 	}
 	public String getMsgType() {
@@ -38,5 +33,19 @@ public class Message {
 	public void setMsgType(String msgType) {
 		MsgType = msgType;
 	}
+	public long getMsgId() {
+		return MsgId;
+	}
+	public void setMsgId(long msgId) {
+		MsgId = msgId;
+	}
+	public Message(String toUserName, String fromUserName, long createTime, String msgType, long msgId) {
+		ToUserName = toUserName;
+		FromUserName = fromUserName;
+		CreateTime = createTime;
+		MsgType = msgType;
+		MsgId = msgId;
+	}
+	
 
 }

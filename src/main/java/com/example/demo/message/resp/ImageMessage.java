@@ -1,30 +1,28 @@
 package com.example.demo.message.resp;
 
 public class ImageMessage extends Message{
-	
-	private String PicUrl;
-	private String MediaId;
+
+	private Image Image;
+
 	public ImageMessage() {
 	}
-	public ImageMessage(String toUserName, String fromUserName, Integer createTime, String msgType, Integer msgId,
-			String picUrl, String mediaId) {
-		super(toUserName, fromUserName, createTime, msgType, msgId);
-		PicUrl = picUrl;
-		MediaId = mediaId;
+
+	public ImageMessage(String toUserName, String fromUserName, long createTime, String msgType,
+			com.example.demo.message.resp.Image image) {
+		super(toUserName, fromUserName, createTime, msgType);
+		Image = image;
 	}
-	public String getPicUrl() {
-		return PicUrl;
+
+	public Image getImage() {
+		return Image;
 	}
-	public void setPicUrl(String picUrl) {
-		PicUrl = picUrl;
+
+	public void setImage(Image image) {
+		Image = image;
 	}
-	public String getMediaId() {
-		return MediaId;
-	}
-	public void setMediaId(String mediaId) {
-		MediaId = mediaId;
-	}
-	
+
 	
 
+	
+	
 }

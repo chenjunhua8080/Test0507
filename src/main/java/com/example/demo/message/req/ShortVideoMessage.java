@@ -1,4 +1,4 @@
-package com.example.demo.message.resp;
+package com.example.demo.message.req;
 
 public class ShortVideoMessage extends Message{
 	

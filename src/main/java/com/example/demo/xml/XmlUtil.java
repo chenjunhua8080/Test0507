@@ -13,10 +13,13 @@ import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
 import com.example.demo.message.resp.ImageMessage;
+import com.example.demo.message.resp.Message;
+import com.example.demo.message.resp.Music;
 import com.example.demo.message.resp.MusicMessage;
 import com.example.demo.message.resp.NewsItem;
 import com.example.demo.message.resp.NewsMessage;
 import com.example.demo.message.resp.TextMessage;
+import com.example.demo.message.resp.Video;
 import com.example.demo.message.resp.VideoMessage;
 import com.example.demo.message.resp.VoiceMessage;
 import com.thoughtworks.xstream.XStream;
@@ -30,7 +33,7 @@ import net.sf.json.xml.XMLSerializer;
 
 public class XmlUtil {
 
-	public static Map<String, String> parseXml(HttpServletRequest request) throws Exception {
+	public static Map<String, String> parseXml(HttpServletRequest request,int f) throws Exception {
 		// 将解析结果存储在HashMap中
 		Map<String, String> map = new HashMap<String, String>();
 		// 从request中取得输入流
@@ -53,6 +56,31 @@ public class XmlUtil {
 		inputStream.close();
 		inputStream = null;
 		return map;
+	}
+	
+	public static JSONObject parseXml(HttpServletRequest request) throws Exception {
+		// 将解析结果存储在HashMap中
+		JSONObject jsonObject = new JSONObject();
+		// 从request中取得输入流
+		InputStream inputStream = request.getInputStream();
+		// 读取输入流
+		SAXReader reader = new SAXReader();
+		Document document = reader.read(inputStream);
+		// 得到xml根元素
+		Element root = document.getRootElement();
+		// 得到根元素的所有子节点
+		@SuppressWarnings("unchecked")
+		List<Element> elementList = root.elements();
+
+		// 遍历所有子节点
+		for (Element e : elementList) {
+			jsonObject.put(e.getName(), e.getText());
+		}
+
+		// 释放资源
+		inputStream.close();
+		inputStream = null;
+		return jsonObject;
 	}
 
 	/**
@@ -138,6 +166,9 @@ public class XmlUtil {
      */
     public static String messageToXml(VideoMessage videoMessage) {
         xstream.alias("xml", videoMessage.getClass());
+        xstream.omitField(videoMessage.getClass(), "id");
+        xstream.omitField(Video.class, "id");
+        xstream.omitField(Message.class, "id");
         return xstream.toXML(videoMessage);
     }
 
@@ -149,6 +180,9 @@ public class XmlUtil {
      */
     public static String messageToXml(MusicMessage musicMessage) {
         xstream.alias("xml", musicMessage.getClass());
+        xstream.omitField(musicMessage.getClass(), "id");
+        xstream.omitField(Music.class, "id");
+        xstream.omitField(Message.class, "id");
         return xstream.toXML(musicMessage);
     }
 
@@ -160,7 +194,7 @@ public class XmlUtil {
      */
     public static String messageToXml(NewsMessage newsMessage) {
         xstream.alias("xml", newsMessage.getClass());
-        xstream.alias("item", new NewsItem().getClass());
+        xstream.alias("Articles", new NewsItem().getClass());
         return xstream.toXML(newsMessage);
     }
 

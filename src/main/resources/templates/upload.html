@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>GET</h1>
+	<form action="/media" method="GET">
+		<input type="text" name="path" />
+		 <select name="type">
+			<option value="thumb">缩略图（thumb）：64KB，支持JPG格式</option>
+			<option value="image">图片（image）: 2M，支持PNG\JPEG\JPG\GIF格式</option>
+			<option value="video">视频（video）：10MB，支持MP4格式</option>
+			<option value="voice">语音（voice）：2M，播放长度不超过60s，支持AMR\MP3格式</option>
+		</select> 
+		<input type="submit" value="上传" />
+	</form>
+	<h1>POST</h1>
+	<form action="/upload/media" method="POST"
+		enctype="multipart/form-data">
+		<input type="file" name="file" />
+		<select name="type">
+			<option value="thumb">缩略图（thumb）：64KB，支持JPG格式</option>
+			<option value="image">图片（image）: 2M，支持PNG\JPEG\JPG\GIF格式</option>
+			<option value="video">视频（video）：10MB，支持MP4格式</option>
+			<option value="voice">语音（voice）：2M，播放长度不超过60s，支持AMR\MP3格式</option>
+		</select> 
+		<input type="submit" value="上传" />
+	</form>
+</body>
+</html>

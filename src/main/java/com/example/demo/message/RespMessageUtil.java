@@ -53,12 +53,12 @@ public class RespMessageUtil {
 			// 处理文本消息
 			String content = jsonObject.getString("Content");
 			if (content.equals("音乐")) {
-				jsonObject.put("MediaId", "L1KyolEv_z8HXG5IUIeJWu-UIkklSKiTpjvoiAVVbAY");
+				jsonObject.put("MediaId", "XpQb51VpjzgrOnE-J0VimZDUVDcJ_G6PWTnG_XgBbm8YCmywNBCVqqAVISQww7oL");
 				jsonObject.put("MsgType", "music");
 				responseMessage = buildMusicMessage(jsonObject);
 			} else if (content.equals("视频")) {
-				jsonObject.put("ThumbMediaId", "L1KyolEv_z8HXG5IUIeJWu-UIkklSKiTpjvoiAVVbAY");
-				jsonObject.put("MediaId", "L1KyolEv_z8HXG5IUIeJWkf6WNopPx-XU4SmBwn-wts");
+				jsonObject.put("ThumbMediaId", "XpQb51VpjzgrOnE-J0VimZDUVDcJ_G6PWTnG_XgBbm8YCmywNBCVqqAVISQww7oL");
+				jsonObject.put("MediaId", "gAKP3zB8o7Fn9o_i5x311KVLWquDFWFLlRieNrIwgadkScN765VrqEXGXQV72TGz");
 				jsonObject.put("MsgType", "video");
 				responseMessage = buildVideoMessage(jsonObject);
 			} else if (content.equals("图文")) {

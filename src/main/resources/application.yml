@@ -12,6 +12,10 @@ spring:
     restart:
       enabled: false
       exclude: WEB-INF/**
+  servlet:
+    multipart:
+      max-file-size: 10Mb 
+      max-request-size: 10Mb
 wechat:
   appid: wx9821aff994e422d9
   appsecret: ed77218b9de588780a92c8cd4da503d7

@@ -57,12 +57,6 @@
 			<groupId>dom4j</groupId>
 			<artifactId>dom4j</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>net.sf.json-lib</groupId>
-			<artifactId>json-lib</artifactId>
-			<version>2.4</version>
-			<classifier>jdk15</classifier>
-		</dependency>
 		<dependency>  
             <groupId>xom</groupId>  
             <artifactId>xom</artifactId>  
@@ -77,6 +71,17 @@
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpmime</artifactId>
 			</dependency>
+		<dependency>
+			<groupId>net.sf.json-lib</groupId>
+			<artifactId>json-lib</artifactId>
+			<version>2.4</version>
+			<classifier>jdk13</classifier>
+		</dependency>
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>20030211.134440</version>
+		</dependency>
 	</dependencies>
 
 	<build>

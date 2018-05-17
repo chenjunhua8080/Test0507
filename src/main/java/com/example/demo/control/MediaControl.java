@@ -14,10 +14,13 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.api.Api;
 import com.example.demo.dao.MediaDao;
+import com.example.demo.dao.NewsMediaDao;
 import com.example.demo.dao.TokenDao;
 import com.example.demo.entity.Media;
+import com.example.demo.entity.NewsMedia;
 import com.example.demo.http.HttpMethod;
 import com.example.demo.http.HttpUtil;
+import com.example.demo.media.Articles;
 
 import net.sf.json.JSONObject;
 
@@ -29,6 +32,9 @@ public class MediaControl {
 
 	@Autowired
 	private MediaDao mediaDao;
+	
+	@Autowired
+	private NewsMediaDao newsDao;
 
 	@GetMapping("/count/media")
 	public String mediaCount() throws Exception {
@@ -63,23 +69,50 @@ public class MediaControl {
 	}
 
 	@PostMapping("/upload/media")
-	public String uploadMedia(HttpServletRequest request, @RequestParam("file") MultipartFile file,@RequestParam("type") String type) throws Exception {
+	public String uploadMedia(HttpServletRequest request, @RequestParam("file") MultipartFile file,@RequestParam("type") String type,@RequestParam("isForever") int isForever) throws Exception {
 		String contentType = type.equals("")?file.getContentType():type;
 		String fileName = file.getOriginalFilename();
-		String url = Api.media_upload.replace("ACCESS_TOKEN", tokenDao.findByIdMax().getValue()).replace("TYPE",
-				contentType);
+		String url ="";
+		if (isForever==0) {
+			 url=Api.media_upload.replace("ACCESS_TOKEN", tokenDao.findByIdMax().getValue()).replace("TYPE",
+						contentType);
+		}else {
+			 url=Api.forever_media_upload.replace("ACCESS_TOKEN", tokenDao.findByIdMax().getValue()).replace("TYPE",
+						contentType);
+		}
 		String path = multipartFile2File(request, file);
 		String result = HttpUtil.uploadRequest(url,path+fileName );
 		if (result.contains("media_id")) {
 			JSONObject json = JSONObject.fromObject(result);
-			json.put("path", fileName);
 			System.err.println(json.toString());
 			Media media = (Media) JSONObject.toBean(json, Media.class);
+			media.setPath(fileName);
+			media.setIsForever(isForever);
 			media = mediaDao.save(media);
 			return media.toString();
 		}
 		return result;
 	}
+	
+	@PostMapping("/upload/news")
+	public String uploadNews(NewsMedia news) throws Exception {
+		String url = Api.news_upload.replace("ACCESS_TOKEN", tokenDao.findByIdMax().getValue());
+		Articles arr=new Articles();
+		NewsMedia[] newsList=new NewsMedia[]{news};
+		arr.setArticles(newsList);
+		JSONObject json = JSONObject.fromObject(arr);
+		String param = json.toString();
+		System.out.println(param);
+		String result = HttpUtil.request(url, HttpMethod.POST, param);
+		if (result.contains("media_id")) {
+			JSONObject respJson = JSONObject.fromObject(result);
+			news.setMedia_id(respJson.getString("media_id"));
+			NewsMedia respNews = newsDao.save(news);
+			return respNews.toString();
+		}
+		return result;
+	}
+	
 
 	private static String multipartFile2File(HttpServletRequest request, MultipartFile file) throws Exception {
 		String filePath="";

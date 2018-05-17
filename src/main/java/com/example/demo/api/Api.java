@@ -148,4 +148,59 @@ public class Api {
 	 * media	是	form-data中媒体文件标识，有filename、filelength、content-type等信息<br/>
 	 */
 	public static final String media_upload ="https://api.weixin.qq.com/cgi-bin/media/upload?access_token=ACCESS_TOKEN&type=TYPE";
+	
+	/**
+	 * http请求方式: POST，需使用https<br/>
+	 * 参数说明<br/>
+	 * 参数	是否必须	说明<br/>
+	 * access_token	是	调用接口凭证<br/>
+	 * type	是	媒体文件类型，分别有图片（image）、语音（voice）、视频（video）和缩略图（thumb）<br/>
+	 * media	是	form-data中媒体文件标识，有filename、filelength、content-type等信息<br/>
+	 * 在上传视频素材时需要POST另一个表单，id为description，包含素材的描述信息，内容格式为JSON，格式如下：<br/>
+	 * {<br/>
+	 *   "title":VIDEO_TITLE,<br/>
+	 *   "introduction":INTRODUCTION<br/>
+	 * }<br/>
+	 */
+	public static final String forever_media_upload ="https://api.weixin.qq.com/cgi-bin/material/add_material?access_token=ACCESS_TOKEN&type=TYPE";
+
+	
+	/**
+	 * http请求方式：POST/FORM，使用https<br/>
+	 * 参数说明<br/>
+	 * 参数	是否必须	说明<br/>
+	 * title	是	标题<br/>
+	 * thumb_media_id	是	图文消息的封面图片素材id（必须是永久mediaID）<br/>
+	 * author	否	作者<br/>
+	 * digest	否	图文消息的摘要，仅有单图文消息才有摘要，多图文此处为空。如果本字段为没有填写，则默认抓取正文前64个字。<br/>
+	 * show_cover_pic	是	是否显示封面，0为false，即不显示，1为true，即显示<br/>
+	 * content	是	图文消息的具体内容，支持HTML标签，必须少于2万字符，小于1M，且此处会去除JS,涉及图片url必须来源 "上传图文消息内的图片获取URL"接口获取。外部图片url将被过滤。<br/>
+	 * content_source_url	是	图文消息的原文地址，即点击“阅读原文”后的URL<br/>
+	 * 调用示例<br/>
+	 * {<br/>
+	 * "articles": [{<br/>
+	 * "title": TITLE,<br/>
+	 * "thumb_media_id": THUMB_MEDIA_ID,<br/>
+	 * "author": AUTHOR,<br/>
+	 * "digest": DIGEST,<br/>
+	 * "show_cover_pic": SHOW_COVER_PIC(0 / 1),<br/>
+	 * "content": CONTENT,<br/>
+	 * "content_source_url": CONTENT_SOURCE_URL<br/>
+	 * },<br/>
+	 * //若新增的是多图文素材，则此处应还有几段articles结构<br/>
+	 * ]<br/>
+	 * }<br/>
+	 */
+	public static final String news_upload ="https://api.weixin.qq.com/cgi-bin/material/add_news?access_token=ACCESS_TOKEN";
+	
+	
+	/**
+	 * http请求方式：POST/FORM，使用https<br/>
+	 * 参数说明<br/>
+	 * 参数	是否必须	说明<br/>
+	 * access_token	是	调用接口凭证<br/>
+	 * media	是	form-data中媒体文件标识，有filename、filelength、content-type等信息<br/>
+	 */
+	public static final String news_image_upload ="https://api.weixin.qq.com/cgi-bin/media/uploadimg?access_token=ACCESS_TOKEN";
+
 }

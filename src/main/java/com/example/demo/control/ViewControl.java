@@ -11,4 +11,9 @@ public class ViewControl {
 		return "upload";
 	}
 	
+	@GetMapping("/upload/view/news")
+	public String toViewUploadNews() {
+		return "news";
+	}
+	
 }

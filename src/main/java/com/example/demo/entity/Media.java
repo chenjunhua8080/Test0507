@@ -24,6 +24,11 @@ public class Media {
 	
 	private String created_at;
 
+	private String url;
+	
+	private int isForever;
+	
+	
 	public int getId() {
 		return id;
 	}
@@ -75,19 +80,40 @@ public class Media {
 		this.thumb_media_id = thumb_media_id;
 	}
 
-	public Media(String path, String type, String media_id, String thumb_media_id, String created_at) {
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public int getIsForever() {
+		return isForever;
+	}
+
+	public void setIsForever(int isForever) {
+		this.isForever = isForever;
+	}
+
+	public Media(String path, String type, String media_id, String thumb_media_id, String created_at, String url,
+			int isForever) {
+		super();
 		this.path = path;
 		this.type = type;
 		this.media_id = media_id;
 		this.thumb_media_id = thumb_media_id;
 		this.created_at = created_at;
+		this.url = url;
+		this.isForever = isForever;
 	}
 
 	@Override
 	public String toString() {
 		return "Media [id=" + id + ", path=" + path + ", type=" + type + ", media_id=" + media_id + ", thumb_media_id="
-				+ thumb_media_id + ", created_at=" + created_at + "]";
+				+ thumb_media_id + ", created_at=" + created_at + ", url=" + url + ", isForever=" + isForever + "]";
 	}
+
 
 
 	

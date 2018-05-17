@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>图文</h1>
+	<form action="/upload/news" method="POST">
+		<!-- enctype="multipart/form-data"> -->
+		标题:<input type="text" name="title"><br/>
+		封面:<input type="text" name="thumb_media_id"><br/>
+		是否显示封面:<select name="show_cover_pic">
+			<option value="0">否</option>
+			<option value="1">是</option>
+		</select><br/>
+		原文地址:<input type="text" name="digest"><br/>
+		作者:<input type="text" name="author"><br/>
+		摘要:<input type="text" name="digest"><br/>
+		具体内容:<br/>
+		<textarea rows="10" cols="20" name="content"></textarea><br/>
+		<input type="submit" value="发布图文" />
+	</form>
+</body>
+</html>

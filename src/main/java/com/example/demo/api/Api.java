@@ -203,4 +203,12 @@ public class Api {
 	 */
 	public static final String news_image_upload ="https://api.weixin.qq.com/cgi-bin/media/uploadimg?access_token=ACCESS_TOKEN";
 
+	/**
+	 * http请求方式: POST,https协议<br/>
+	 * 调用示例<br/>
+	 * {<br/>
+	 * "media_id":MEDIA_ID<br/>
+	 * }<br/>
+	 */
+	public static final String get_material="https://api.weixin.qq.com/cgi-bin/material/get_material?access_token=ACCESS_TOKEN";
 }

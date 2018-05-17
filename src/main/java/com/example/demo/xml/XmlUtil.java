@@ -193,8 +193,12 @@ public class XmlUtil {
      * @return xml
      */
     public static String messageToXml(NewsMessage newsMessage) {
+        xstream.omitField(newsMessage.getClass(), "id");
+        xstream.omitField(NewsItem.class, "id");
+        xstream.omitField(Message.class, "id");
         xstream.alias("xml", newsMessage.getClass());
-        xstream.alias("Articles", new NewsItem().getClass());
+        xstream.alias("item", new NewsItem().getClass());
+        xstream.aliasAttribute(null, "class");
         return xstream.toXML(newsMessage);
     }
 

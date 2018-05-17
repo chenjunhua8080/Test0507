@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import com.example.demo.dao.RespMessageDao;
 import com.example.demo.message.resp.Image;
 import com.example.demo.message.resp.ImageMessage;
+import com.example.demo.message.resp.Message;
 import com.example.demo.message.resp.Music;
 import com.example.demo.message.resp.MusicMessage;
 import com.example.demo.message.resp.NewsItem;
@@ -61,9 +62,22 @@ public class RespMessageUtil {
 				jsonObject.put("MediaId", "gAKP3zB8o7Fn9o_i5x311KVLWquDFWFLlRieNrIwgadkScN765VrqEXGXQV72TGz");
 				jsonObject.put("MsgType", "video");
 				responseMessage = buildVideoMessage(jsonObject);
-			} else if (content.equals("图文")) {
-				jsonObject.put("Url", "https://mp.weixin.qq.com//s?__biz=MzUxOTQ5MzgxNw==&mid=100000008&idx=1&sn=5f9cdc54a73c30fb46490335e99fedc7&chksm=79f980de4e8e09c8940cc72929b174267286e3c49d8ebe2c9133ca48a756c9ad19be321fb3ae#rd");
-				jsonObject.put("PicUrl", "http://mmbiz.qpic.cn//mmbiz_jpg//7jFEdSoRKZgEMMnwzonUIKA1bOXTugaTWs0j373ekmotJ9WD1psOmxEVPO8XlYDLAYqyiaWEzD2DIAZdOJ4Gy3g//0?wx_fmt=jpeg");
+			} else if (content.equals("语音")) {
+				jsonObject.put("MediaId", "L1KyolEv_z8HXG5IUIeJWvDbrGAKitI26U8oYPc1U2c");
+				jsonObject.put("MsgType", "voice");
+				responseMessage = buildVoiceMessage(jsonObject);
+			} else if (content.equals("易烊千玺")) {
+				jsonObject.put("Url", "https://www.weibo.com/tfyiyangqianxi");
+				jsonObject.put("PicUrl", "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1526570205756&di=b3966dd68d7a2da2ccef1de4d03860c1&imgtype=0&src=http%3A%2F%2Fuserpic.api.max.mgtv.com%2Fperson59783d7a40583.jpg%3F");
+				jsonObject.put("t","进入易烊千玺的空间");
+				jsonObject.put("d","看看小哥哥的日常...");
+				jsonObject.put("MsgType", "news");
+				responseMessage = buildNewsMessage(jsonObject);
+			} else if (content.equals("满分作文")) {
+				jsonObject.put("Url", "http://mp.weixin.qq.com/s?__biz=MzUxOTQ5MzgxNw==&mid=100000014&idx=1&sn=e1777ffc4b99cfe1f9aee81e109d5624&chksm=79f980d84e8e09cefdc97cc7e6df4792ae29c58a623d79ee3d1b8a50044053e284dee2d939c6#rd");
+				jsonObject.put("PicUrl", "http://mmbiz.qpic.cn/mmbiz_gif/7jFEdSoRKZjrTMbGpjusZxbAovdqpK7YxO1Qiaoe40bCZia3DXuxREObRw3icpARF6RdZuav4LsGiajoEicAHv8FLHg/0?wx_fmt=gif");
+				jsonObject.put("t","心里有光");
+				jsonObject.put("d","2017全国卷Ⅱ高考满分作文");
 				jsonObject.put("MsgType", "news");
 				responseMessage = buildNewsMessage(jsonObject);
 			} else {
@@ -186,7 +200,7 @@ public class RespMessageUtil {
 		videoMessage.setToUserName(json.getString("FromUserName"));
 		videoMessage.setMsgType(json.getString("MsgType"));
 		videoMessage.setCreateTime(new Date().getTime());
-		Video video = new Video(json.getString("ThumbMediaId"),json.getString("MediaId"), "你的视频", "这是一个被动回复的视频消息");
+		Video video = new Video(json.getString("ThumbMediaId"),json.getString("MediaId"), "南校图书馆", "一片书声琅琅，同学们在认真读书...");
 		videoMessage.setVideo(video);
 		dao.save(videoMessage);
 		return XmlUtil.messageToXml(videoMessage);
@@ -198,7 +212,7 @@ public class RespMessageUtil {
 		musicMessage.setToUserName(json.getString("FromUserName"));
 		musicMessage.setMsgType(json.getString("MsgType"));
 		musicMessage.setCreateTime(new Date().getTime());
-		Music music = new Music(json.getString("MediaId"), "你的音乐", "这是一个被动回复的音乐消息",
+		Music music = new Music(json.getString("MediaId"), "最美的情侣", "来听一听抖音洗脑神曲",
 				"http://mp3.qqmusic.cc/yq/212877015.mp3", "http://mp3.qqmusic.cc/yq/212877015.mp3");
 		musicMessage.setMusic(music);
 		dao.save(musicMessage);
@@ -212,11 +226,17 @@ public class RespMessageUtil {
 		newsMessage.setMsgType(json.getString("MsgType"));
 		newsMessage.setCreateTime(new Date().getTime());
 		newsMessage.setArticleCount(1);
-		NewsItem item = new NewsItem("url", "picurl", "图文标题", "图文描述");
+		NewsItem item = new NewsItem(json.getString("Url"), json.getString("PicUrl"), json.getString("t"),json.getString("d"));
 		List<NewsItem> items = new ArrayList<>();
 		items.add(item);
 		newsMessage.setArticles(items);
-		dao.save(newsMessage);
+		//暂时撤销注解newsMessage，得不到正确的xml
+		Message message=new Message();
+		message.setFromUserName(json.getString("ToUserName"));
+		message.setToUserName(json.getString("FromUserName"));
+		message.setMsgType(json.getString("MsgType"));
+		message.setCreateTime(new Date().getTime());
+		dao.save(message);
 		return XmlUtil.messageToXml(newsMessage);
 	}
 

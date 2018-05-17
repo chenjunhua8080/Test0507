@@ -50,7 +50,15 @@ public class MediaControl {
 				"{\"type\":\"" + type + "\",\"offset\":\"0\",\"count\":\"10\"}");
 		return result;
 	}
-
+	
+	@GetMapping("/get/media/{media_id}")
+	public String getMedia(@PathVariable String media_id) throws Exception {
+		String url = Api.get_material.replace("ACCESS_TOKEN", tokenDao.findByIdMax().getValue());
+		String result = HttpUtil.request(url, HttpMethod.POST,
+				"{\"media_id\":\"" + media_id + "\"}");
+		return result;
+	}
+	
 	@GetMapping("/upload/media")
 	public String uploadMedia(@RequestParam("path") String path, @RequestParam("type") String type) throws Exception {
 		// public String uploadMedia(String path, String type) throws Exception {
@@ -73,12 +81,17 @@ public class MediaControl {
 		String contentType = type.equals("")?file.getContentType():type;
 		String fileName = file.getOriginalFilename();
 		String url ="";
-		if (isForever==0) {
-			 url=Api.media_upload.replace("ACCESS_TOKEN", tokenDao.findByIdMax().getValue()).replace("TYPE",
+		if (type.equals("newsImg")) {
+			 url=Api.news_image_upload.replace("ACCESS_TOKEN", tokenDao.findByIdMax().getValue()).replace("TYPE",
 						contentType);
-		}else {
-			 url=Api.forever_media_upload.replace("ACCESS_TOKEN", tokenDao.findByIdMax().getValue()).replace("TYPE",
-						contentType);
+		} else {
+			if (isForever==0) {
+				 url=Api.media_upload.replace("ACCESS_TOKEN", tokenDao.findByIdMax().getValue()).replace("TYPE",
+							contentType);
+			}else {
+				 url=Api.forever_media_upload.replace("ACCESS_TOKEN", tokenDao.findByIdMax().getValue()).replace("TYPE",
+							contentType);
+			}
 		}
 		String path = multipartFile2File(request, file);
 		String result = HttpUtil.uploadRequest(url,path+fileName );

@@ -11,12 +11,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-@Entity
-@Table
+//@Entity
+//@Table
 public class NewsMessage extends Message{
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	@Id
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	public int getId() {
 		return id;
@@ -25,7 +25,7 @@ public class NewsMessage extends Message{
 		this.id = id;
 	}
 
-	@OneToMany(cascade=CascadeType.ALL)
+//	@OneToMany(cascade=CascadeType.ALL)
 	private List<NewsItem> Articles;
 	private int ArticleCount;
 	public NewsMessage() {

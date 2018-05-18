@@ -126,6 +126,33 @@ public class MediaControl {
 		return result;
 	}
 	
+	@GetMapping("/comment/open/{media_id}")
+	public String openComment(@PathVariable String media_id) throws Exception {
+		String url = Api.comment_open.replace("ACCESS_TOKEN", tokenDao.findByIdMax().getValue());
+		String result = HttpUtil.request(url, HttpMethod.POST,
+				"{\"msg_data_id\":\"" + media_id + "\"}");
+		return result;
+	}
+	
+	@GetMapping("/list/comment")
+	public String listComment(@PathVariable String media_id) throws Exception {
+		String url = Api.comment_list.replace("ACCESS_TOKEN", tokenDao.findByIdMax().getValue());
+		String result = HttpUtil.request(url, HttpMethod.POST,
+				"{\"msg_data_id\":\""+media_id+"\",\"begin\":0,\"count\":10,\"type\":0}");
+		return result;
+	}
+	
+	
+	@GetMapping("/reply/comment")
+	public String replyComment(@PathVariable("media_id") String media_id,@PathVariable("user_comment_id") String user_comment_id,@PathVariable("content") String content) throws Exception {
+		String url = Api.comment_reply.replace("ACCESS_TOKEN", tokenDao.findByIdMax().getValue());
+		String result = HttpUtil.request(url, HttpMethod.POST,
+				"{\"msg_data_id\":\""+media_id+"\",\"user_comment_id\":\""+user_comment_id+"\",\"content\":\""+content+"\"}");
+		return result;
+	}
+	
+	
+	
 
 	private static String multipartFile2File(HttpServletRequest request, MultipartFile file) throws Exception {
 		String filePath="";

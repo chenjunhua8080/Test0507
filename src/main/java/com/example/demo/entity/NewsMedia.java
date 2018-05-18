@@ -22,12 +22,16 @@ public class NewsMedia {
 	private String content;
 	private String content_source_url;
 	private String media_id;
+	
+	private String need_open_comment;
+	private String only_fans_can_comment;
 
 	@Override
 	public String toString() {
 		return "NewsMedia [id=" + id + ", title=" + title + ", thumb_media_id=" + thumb_media_id + ", author=" + author
 				+ ", digest=" + digest + ", show_cover_pic=" + show_cover_pic + ", content=" + content
-				+ ", content_source_url=" + content_source_url + ", media_id=" + media_id + "]";
+				+ ", content_source_url=" + content_source_url + ", media_id=" + media_id + ", need_open_comment="
+				+ need_open_comment + ", only_fans_can_comment=" + only_fans_can_comment + "]";
 	}
 
 	public NewsMedia() {
@@ -43,6 +47,24 @@ public class NewsMedia {
 		this.show_cover_pic = show_cover_pic;
 		this.content = content;
 		this.content_source_url = content_source_url;
+	}
+	
+	
+
+	public NewsMedia(String title, String thumb_media_id, String author, String digest, int show_cover_pic,
+			String content, String content_source_url, String media_id, String need_open_comment,
+			String only_fans_can_comment) {
+		super();
+		this.title = title;
+		this.thumb_media_id = thumb_media_id;
+		this.author = author;
+		this.digest = digest;
+		this.show_cover_pic = show_cover_pic;
+		this.content = content;
+		this.content_source_url = content_source_url;
+		this.media_id = media_id;
+		this.need_open_comment = need_open_comment;
+		this.only_fans_can_comment = only_fans_can_comment;
 	}
 
 	public int getId() {
@@ -116,5 +138,23 @@ public class NewsMedia {
 	public void setMedia_id(String media_id) {
 		this.media_id = media_id;
 	}
+
+	public String getNeed_open_comment() {
+		return need_open_comment;
+	}
+
+	public void setNeed_open_comment(String need_open_comment) {
+		this.need_open_comment = need_open_comment;
+	}
+
+	public String getOnly_fans_can_comment() {
+		return only_fans_can_comment;
+	}
+
+	public void setOnly_fans_can_comment(String only_fans_can_comment) {
+		this.only_fans_can_comment = only_fans_can_comment;
+	}
+	
+	
 
 }

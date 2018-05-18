@@ -211,4 +211,127 @@ public class Api {
 	 * }<br/>
 	 */
 	public static final String get_material="https://api.weixin.qq.com/cgi-bin/material/get_material?access_token=ACCESS_TOKEN";
+
+	/**
+	 * http请求方式: POST<br/>
+	 * 参数	是否必须	说明<br/>
+	 * msg_data_id	是	Uint32	群发返回的msg_data_id<br/>
+	 * index	否	Uint32	多图文时，用来指定第几篇图文，从0开始，不带默认操作该msg_data_id的第一篇图文<br/>
+	 */
+	public static final String comment_open= "https://api.weixin.qq.com/cgi-bin/comment/open?access_token=ACCESS_TOKEN";
+	
+	/**
+	 * http请求方式: POST<br/>
+	 * 参数	是否必须	说明<br/>
+	 * msg_data_id	是	Uint32	群发返回的msg_data_id<br/>
+	 * index	否	Uint32	多图文时，用来指定第几篇图文，从0开始，不带默认返回该msg_data_id的第一篇图文<br/>
+	 * begin	是	Uint32	起始位置<br/>
+	 * count	是	Uint32	获取数目（>=50会被拒绝）<br/>
+	 * type	是	Uint32	type=0 普通评论&精选评论 type=1 普通评论 type=2 精选评论<br/>
+	 */
+	public static final String comment_list = "https://api.weixin.qq.com/cgi-bin/comment/list?access_token=ACCESS_TOKEN";
+
+	/**
+	 * http请求方式: POST<br/>
+	 * 参数	是否必须	说明<br/>
+	 * msg_data_id	是	Uint32	群发返回的msg_data_id<br/>
+	 * index	否	Uint32	多图文时，用来指定第几篇图文，从0开始，不带默认操作该msg_data_id的第一篇图文文<br/>
+	 * user_comment_id	是	Uint32	评论id<br/>
+	 * content	是	string	回复内容<br/>
+	 */
+	public static final String comment_reply = "https://api.weixin.qq.com/cgi-bin/comment/reply/add?access_token=ACCESS_TOKEN";
+
+	
+	/**
+	 * http请求方式：POST（请使用https协议）<br/>
+	 * 参数 是否必须 说明<br/>
+	 * access_token	调用接口凭据<br/>
+	 * name	标签名（30个字符以内）<br/>
+	 * json:{   "tag" : {     "name" : "广东"//标签名   } }<br/>
+	 */
+	public static final String tag_create = "https://api.weixin.qq.com/cgi-bin/tags/create?access_token=ACCESS_TOKEN";
+
+	/**
+	 * http请求方式：get（请使用https协议）<br/>
+	 */
+	public static final String tag_list = "https://api.weixin.qq.com/cgi-bin/tags/get?access_token=ACCESS_TOKEN";
+
+	/**
+	 * http请求方式：POST（请使用https协议）<br/>
+	 * 参数 是否必须 说明<br/>
+	 * access_token	调用接口凭据<br/>
+	 * name	标签名（30个字符以内）<br/>
+	 * json:{   "tag" : {   "id":1  ,"name" : "广东"   } }<br/>
+	 */
+	public static final String tag_update = "https://api.weixin.qq.com/cgi-bin/tags/update?access_token=ACCESS_TOKEN";
+	
+	
+	/**
+	 * http请求方式：POST（请使用https协议）<br/>
+	 * 参数 是否必须 说明<br/>
+	 * access_token	调用接口凭据<br/>
+	 * name	标签名（30个字符以内）<br/>
+	 * json:{   "tag" : {     "id" : 1  } }<br/>
+	 */
+	public static final String tag_detele = "https://api.weixin.qq.com/cgi-bin/tags/delete?access_token=ACCESS_TOKEN";
+	
+	/**
+	 * http请求方式：GET? POST（请使用https协议）<br/>
+	 * 参数 是否必须 说明<br/>
+	 * access_token	调用接口凭据<br/>
+	 * name	标签名（30个字符以内）<br/>
+	 * json:{  "tagid" : 1,"next_openid":""    } <br/>
+	 */
+	public static final String tag_user_list= "https://api.weixin.qq.com/cgi-bin/user/tag/get?access_token=ACCESS_TOKEN";
+
+	/**
+	 * http请求方式：POST（请使用https协议）<br/>
+	 * 参数 是否必须 说明<br/>
+	 * access_token	调用接口凭据<br/>
+	 * name	标签名（30个字符以内）<br/>
+	 * json:{   "openid_list" :["openid1","openid2"],"tagid":1 }<br/>
+	 */
+	public static final String tag_add_user= "https://api.weixin.qq.com/cgi-bin/tags/members/batchtagging?access_token=ACCESS_TOKEN";
+	
+	/**
+	 * http请求方式：POST（请使用https协议）<br/>
+	 * 参数 是否必须 说明<br/>
+	 * access_token	调用接口凭据<br/>
+	 * name	标签名（30个字符以内）<br/>
+	 * json:{   "openid_list" :["openid1","openid2"],"tagid":1 }<br/>
+	 */
+	public static final String tag_remove_user= "https://api.weixin.qq.com/cgi-bin/tags/members/batchuntagging?access_token=ACCESS_TOKEN";
+	
+	
+	/**
+	 * http请求方式：POST（请使用https协议）<br/>
+	 * 参数 是否必须 说明<br/>
+	 * access_token	调用接口凭据<br/>
+	 * name	标签名（30个字符以内）<br/>
+	 * json:{   "openid" :"openid1" }<br/>
+	 */
+	public static final String get_user_tag= "https://api.weixin.qq.com/cgi-bin/tags/getidlist?access_token=ACCESS_TOKEN";
+
+
+	/**
+	 * http请求方式: POST<br/>
+	 * 图文类型<br/>
+	 * {<br/>
+	 *    "filter":{<br/>
+	 *       "is_to_all":false,<br/>
+	 *       "tag_id":2<br/>
+	 *    },<br/>
+	 *    "mpnews":{<br/>
+	 *       "media_id":"123dsdajkasd231jhksad"<br/>
+	 *    },<br/>
+	 *     "msgtype":"mpnews",<br/>
+	 *     "send_ignore_reprint":0<br/>
+	 * }<br/>
+	 * 其他类型实例<br/>
+	 * "text":{<br/>
+	 *    "content":"CONTENT"<br/>
+	 * },<br/>
+	 *  "msgtype":"text"<br/>
+	 */
+	public static final String send_message="https://api.weixin.qq.com/cgi-bin/message/mass/sendall?access_token=ACCESS_TOKEN";
 }

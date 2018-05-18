@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>群发</h1>
+	<form action="/send" method="POST">
+		<!-- enctype="multipart/form-data"> -->
+		全体成员:<select name="is_to_all">
+			<option value="false">否</option>
+			<option value="true">是</option>
+		</select><br/>
+		按标签id:<input type="text" name="tag_id"><br/>
+		消息类型:<select name="msgtype">
+			<option value="mpnews">图文</option>
+			<option value="text">文本</option>
+			<option value="voice">语言</option>
+			<option value="image">图片</option>
+			<option value="mpvideo">视频</option>
+			<option value="wxcard">卡券</option>
+		</select><br/>
+		media_id/content:<input type="text" name="content"><br/>
+		<input type="submit" value="群发" />
+	</form>
+</body>
+</html>

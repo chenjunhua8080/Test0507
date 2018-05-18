@@ -16,4 +16,9 @@ public class ViewControl {
 		return "news";
 	}
 	
+	@GetMapping("/send/view")
+	public String toViewSend() {
+		return "send";
+	}
+	
 }

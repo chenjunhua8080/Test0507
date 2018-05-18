@@ -31,7 +31,8 @@ import org.springframework.web.multipart.MultipartFile;
 public class HttpUtil {
 
 	public static String request(String urlStr, String method, String param) throws Exception {
-		System.out.println(urlStr);
+		System.out.println("url >>> "+urlStr);
+		System.out.println("param >>> " +param);
 		URL url = new URL(urlStr);
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
@@ -68,6 +69,7 @@ public class HttpUtil {
 		reader = null;
 
 		String result = resultBuffer.toString();
+		System.err.println("resp >>> " +result);
 		return result;
 	}
 

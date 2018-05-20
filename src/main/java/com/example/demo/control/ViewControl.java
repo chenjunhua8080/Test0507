@@ -21,4 +21,10 @@ public class ViewControl {
 		return "send";
 	}
 	
+	@GetMapping("/temp/view")
+	public String toViewTemp() {
+		return "temp";
+	}
+	
+	
 }

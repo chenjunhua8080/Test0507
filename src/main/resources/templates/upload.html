@@ -20,11 +20,13 @@
 	<form action="/upload/media" method="POST"
 		enctype="multipart/form-data">
 		<input type="file" name="file" /><br/>
-		保留期限:<select name="isForever">
+		素材类型:<select name="isForever">
 			<option value="0">临时</option>
 			<option value="1">永久</option>
+			<option value="2">群发媒体文件</option>
+			<option value="3">客服头像</option>
 		</select><br/>
-		素材类型:<select name="type">
+		文件类型:<select name="type">
 			<option value="thumb">缩略图（thumb）：64KB，支持JPG格式</option>
 			<option value="image">图片（image）: 2M，支持PNG\JPEG\JPG\GIF格式</option>
 			<option value="video">视频（video）：10MB，支持MP4格式</option>

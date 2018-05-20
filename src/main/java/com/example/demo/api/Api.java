@@ -334,4 +334,124 @@ public class Api {
 	 *  "msgtype":"text"<br/>
 	 */
 	public static final String send_message="https://api.weixin.qq.com/cgi-bin/message/mass/sendall?access_token=ACCESS_TOKEN";
+
+	/**
+	 * 上传文件获得群发所需的media_id，与上传是素材一样
+	 */
+	public static final String send_media="http://file.api.weixin.qq.com/cgi-bin/media/upload?access_token=ACCESS_TOKEN&type=TYPE";
+
+	/**
+	 * http请求方式: POST<br/>
+	 * POST数据说明<br/>
+	 * POST数据示例如下：<br/>
+	 *       {<br/>
+	 *           "industry_id1":"1",<br/>
+	 *           "industry_id2":"4"<br/>
+	 *        }<br/>
+	 */
+	public static final String temp_set_industry="https://api.weixin.qq.com/cgi-bin/template/api_set_industry?access_token=ACCESS_TOKEN";
+	
+	/**
+	 * http请求方式: GET<br/>
+	 */
+	public static final String temp_get_industry="https://api.weixin.qq.com/cgi-bin/template/get_industry?access_token=ACCESS_TOKEN";
+
+	
+	/**
+	 * http请求方式: GET<br/>
+	 */
+	public static final String temp_list="https://api.weixin.qq.com/cgi-bin/template/get_all_private_template?access_token=ACCESS_TOKEN";
+	
+	/**
+	 * http请求方式: POST<br/>
+	 *  {<br/>
+	 *      "template_id" : "Dyvp3-Ff0cnail_CDSzk1fIc6-9lOkxsQE7exTJbwUE"<br/>
+	 *  }<br/>
+	 */
+	public static final String temp_delete="https://api.weixin.qq.com/cgi-bin/template/del_private_template?access_token=ACCESS_TOKEN";
+	
+	/**
+	 * http请求方式: POST<br/>
+	 * { <br/>
+	 *         "touser":"OPENID", <br/>
+	 *         "template_id":"ngqIpbwh8bUfcSsECmogfXcV14J0tQlEpBO27izEYtY", <br/>
+	 *         "url":"http://weixin.qq.com/download",   <br/>
+	 *         "miniprogram":{ <br/>
+	 *           "appid":"xiaochengxuappid12345", <br/>
+	 *           "pagepath":"index?foo=bar" <br/>
+	 *         },        <br/>  
+	 *         "data":{ <br/>
+	 *               .......... <br/> 
+	 *         } <br/>
+	 * } 
+	 * 
+	 * 
+	 */
+	public static final String temp_send="https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=ACCESS_TOKEN";
+
+
+	/**
+	 * http请求方式: POST<br/>
+	 * POST数据示例如下：<br/>
+	 * {<br/>
+	 *      "kf_account" : "test1@test",<br/>
+	 *      "nickname" : "客服1",<br/>
+	 *      "password" : "pswmd5",<br/>
+	 * }
+	 */
+	public static final String custom_add="https://api.weixin.qq.com/customservice/kfaccount/add?access_token=ACCESS_TOKEN";
+	
+	/**
+	 * http请求方式: POST<br/>
+	 * POST数据示例如下：<br/>
+	 * {<br/>
+	 *      "kf_account" : "test1@test",<br/>
+	 *      "nickname" : "客服1",<br/>
+	 *      "password" : "pswmd5",<br/>
+	 * }
+	 */
+	public static final String custom_update="https://api.weixin.qq.com/customservice/kfaccount/update?access_token=ACCESS_TOKEN";
+
+	/**
+	 * http请求方式:GET??? POST<br/>
+	 * POST数据示例如下：<br/>
+	 * {<br/>
+	 *      "kf_account" : "test1@test",<br/>
+	 *      "nickname" : "客服1",<br/>
+	 *      "password" : "pswmd5",<br/>
+	 * }
+	 */
+	public static final String custom_delete="https://api.weixin.qq.com/customservice/kfaccount/del?access_token=ACCESS_TOKEN";
+	
+	/**
+	 * http请求方式: GET<br/>
+	 */
+	public static final String custom_list="https://api.weixin.qq.com/cgi-bin/customservice/getkflist?access_token=ACCESS_TOKEN";
+	
+	/**
+	 * http请求方式: POST<br/>
+	 * 示例文本消息<br/>
+	 * {<br/>
+	 *     "touser":"OPENID",<br/>
+	 *     "msgtype":"text",<br/>
+	 *     "text":<br/>
+	 *     {<br/>
+	 *          "content":"Hello World"<br/>
+	 *     }<br/>
+	 * }<br/>
+	 */
+	public static final String custom_send="https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=ACCESS_TOKEN";
+
+	/**
+	 * http请求方式: POST<br/>
+	 *  { "touser":"OPENID", "command":"Typing"}<br/>
+	 */
+	 public static final String custom_typing="https://api.weixin.qq.com/cgi-bin/message/custom/typing?access_token=ACCESS_TOKEN";
+	 
+	 /**
+		 * http请求方式: POST<br/>
+		 * 走上传素材道路接口
+		 */
+		 public static final String custom_img="http://api.weixin.qq.com/customservice/kfaccount/uploadheadimg?access_token=ACCESS_TOKEN&kf_account=KFACCOUNT";
+	
 }

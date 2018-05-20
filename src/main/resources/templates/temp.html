@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>购买成功</h1>
+	<form action="/send/temp" method="POST">
+		<!-- enctype="multipart/form-data"> -->
+		touser<input type="text" name="touser"><br/>
+		template_id<input type="text" name="template_id"><br/>
+		url<input type="text" name="url"><br/>
+		
+		first:value<input type="text" name="f.value"><br/>
+		first:color<input type="text" name="f.color"><br/>
+		keyword1:value<input type="text" name="k1.value"><br/>
+		keyword1:color<input type="text" name="k1.color"><br/>
+		keyword2:value<input type="text" name="k2.value"><br/>
+		keyword2:color<input type="text" name="k2.color"><br/>
+		remark:value<input type="text" name="r.value"><br/>
+		remark:color<input type="text" name="r.color"><br/>
+		<input type="submit" value="群发" />
+	</form>
+</body>
+</html>

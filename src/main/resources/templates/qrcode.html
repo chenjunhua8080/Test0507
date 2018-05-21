@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>生成二维码</h1>
+	<form action="/show/qrcode" method="POST">
+		<!-- enctype="multipart/form-data"> -->
+		有限期:<input type="text" name="expire_seconds"><br/>
+		二维码类型:<select name="action_name">
+			<option value="QR_LIMIT_SCENE">永久数值型</option>
+			<option value="QR_LIMIT_STR_SCENE">永久文本型</option>
+			<option value="QR_SCENE">临时数值型</option>
+			<option value="QR_STR_SCENE">临时文本型</option>
+		</select><br/>
+		需要于类型对应<br/>
+		scene_str:<input type="text" name="scene_str"><br/>
+		scene_id:<input type="text" name="scene_id"><br/>
+		<input type="submit" value="群发" />
+	</form>
+</body>
+</html>

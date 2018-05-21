@@ -37,9 +37,9 @@ public class ButtonUtil {
          btn23.setUrl("https://hw.weixin.qq.com/devicectrl/panel/device-list.html?appid=wx614c453e0d1dcd12"); 
 
          ViewButton btn31 = new ViewButton();  
-         btn31.setName("百度一下");  
+         btn31.setName("授权页面");  
          btn31.setType(ButtonType.view);  
-         btn31.setUrl("http://www.baidu.com");  
+         btn31.setUrl("http://cjh.nat300.top/oauth2/index");  
 
 
          ClickButton btn32 = new ClickButton();  

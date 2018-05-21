@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>long2short</h1>
+	<form action="/long2short" method="POST">
+		<!-- enctype="multipart/form-data"> -->
+		长连接地址:<input type="text" name="long_url"><br/>
+		转换类型:<select name="action">
+			<option value="long2short">长转短</option>
+		</select><br/>
+		<input type="submit" value="转换" />
+	</form>
+</body>
+</html>

@@ -26,5 +26,14 @@ public class ViewControl {
 		return "temp";
 	}
 	
+	@GetMapping("/qrcode/view")
+	public String toViewQrcode() {
+		return "qrcode";
+	}
+	
+	@GetMapping("/long2short/view")
+	public String toViewLong2Short() {
+		return "long2short";
+	}
 	
 }

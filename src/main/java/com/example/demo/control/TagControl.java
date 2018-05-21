@@ -92,13 +92,4 @@ public class TagControl {
 		return result;
 	}
 	
-	public static void main(String[] args) {
-		Tag tag = new Tag(1, "111");
-		System.out.println(tag);
-		JSONObject json = JSONObject.fromObject(tag);
-		System.out.println(json);
-		Tag jsonTag =(Tag) JSONObject.toBean(json,Tag.class);
-		System.out.println(jsonTag);
-	}
-
 }

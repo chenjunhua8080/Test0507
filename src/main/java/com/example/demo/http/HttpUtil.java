@@ -3,7 +3,10 @@ package com.example.demo.http;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -19,8 +22,8 @@ import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.utils.HttpClientUtils;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -30,9 +33,39 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class HttpUtil {
 
+	public static String downRequest(String urlStr, String method, String savePath) throws Exception {
+		HttpClient client = HttpClients.createDefault();
+		HttpGet get = new HttpGet(urlStr);
+		HttpResponse response = client.execute(get);
+		HttpEntity respEntity = response.getEntity();
+		InputStream inputStream = respEntity.getContent();
+		String fileName = System.currentTimeMillis() + ".jpg";
+		File dir = new File(savePath);
+		if (!dir.exists()) {
+			dir.mkdirs();
+		}
+		File file = new File(savePath + fileName);
+//		if (!file.exists()) {
+//			
+//		}
+		@SuppressWarnings("resource")
+		OutputStream outputStream = new FileOutputStream(file);
+		byte[] buffer = new byte[1024];
+		int readLength = 0;
+		while ((readLength = inputStream.read(buffer)) > 0) {
+			byte[] bytes = new byte[readLength];
+			System.arraycopy(buffer, 0, bytes, 0, readLength);
+			outputStream.write(bytes);
+		}
+
+		outputStream.flush();
+
+		return fileName;
+	}
+
 	public static String request(String urlStr, String method, String param) throws Exception {
-		System.out.println("url >>> "+urlStr);
-		System.out.println("param >>> " +param);
+		System.out.println("url >>> " + urlStr);
+		System.out.println("param >>> " + param);
 		URL url = new URL(urlStr);
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
@@ -69,7 +102,7 @@ public class HttpUtil {
 		reader = null;
 
 		String result = resultBuffer.toString();
-		System.err.println("resp >>> " +result);
+		System.err.println("resp >>> " + result);
 		return result;
 	}
 
@@ -93,6 +126,7 @@ public class HttpUtil {
 		}
 		return result;
 	}
+
 	/**
 	 * Connection reset
 	 */

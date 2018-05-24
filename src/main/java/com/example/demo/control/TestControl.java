@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.dao.ADao;
@@ -18,8 +19,8 @@ public class TestControl {
 	private ADao aDao;
 	
 	@GetMapping("/down/a")
-	public String downA() throws Exception {
-		Map<String, Object> resp = HttpUtil.request();
+	public String downA(@RequestParam String url) throws Exception {
+		Map<String, Object> resp = HttpUtil.request(url);
 		for (String key : resp.keySet()) {
 			aDao.save(new A(key,resp.get(key).toString()));
 		}

@@ -155,11 +155,11 @@ public class HttpUtil {
 		return result;
 	}
 
-	public static Map<String, Object> request() throws Exception {
+	public static Map<String, Object> request(String urlStr) throws Exception {
 
 		Map<String, Object> map = new HashMap<>();
 
-		URL url = new URL("https://www.hao123.com");
+		URL url = new URL(urlStr);
 		URLConnection conn = url.openConnection();
 
 		// 2.处理设置参数和一般请求属性

@@ -22,3 +22,5 @@ wechat:
   signURL: http://152.136.41.165/checkSignature
   tokenKey: MyWeChatApp
   domain: http://152.136.41.165/
+server:
+  port: 8070

@@ -17,8 +17,8 @@ spring:
       max-file-size: 10Mb 
       max-request-size: 10Mb
 wechat:
-  appid: wx9821aff994e422d9
-  appsecret: ed77218b9de588780a92c8cd4da503d7
-  signURL: http://1ge9881707.51mypc.cn/checkSignature
+  appid: wxdbe78f60a273e8ea
+  appsecret: 26260221b2770adfa7c261b1ea8de4c4
+  signURL: http://152.136.41.165/checkSignature
   tokenKey: MyWeChatApp
-  domain: http://cjh.nat300.top/
+  domain: http://152.136.41.165/

@@ -19,6 +19,6 @@ wechat:
   tokenKey: MyWeChatApp
   domain: http://152.136.41.165/
 server:
-  port: 8070
+  port: 8057
   servlet:
     context-path: /wechatMptools

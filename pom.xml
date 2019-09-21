@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.cjh</groupId>
-	<artifactId>WeChatMpTools</artifactId>
+	<artifactId>mptools</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>WeChatMpTools</name>
-	<description>WeChatMpTools</description>
+	<name>mptools</name>
+	<description>mptools</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>

@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class WeChatMpToolsApplication {
+public class MpToolsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(WeChatMpToolsApplication.class, args);
+		SpringApplication.run(MpToolsApplication.class, args);
 	}
 }

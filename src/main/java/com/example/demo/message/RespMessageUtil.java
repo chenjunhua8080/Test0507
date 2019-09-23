@@ -166,6 +166,7 @@ public class RespMessageUtil {
 		textMessage.setMsgType(json.getString("MsgType"));
 		textMessage.setCreateTime(new Date().getTime());
 		textMessage.setContent(json.getString("Content"));
+		textMessage.setMsgId(json.getString("MsgId"));
 		dao.save(textMessage);
 		return XmlUtil.messageToXml(textMessage);
 	}

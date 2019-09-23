@@ -24,6 +24,8 @@ public class Message{
 	private String FromUserName;
 	private long  CreateTime;
 	private String MsgType;
+	private String MsgId;
+
 	public Message() {
 	}
 	public Message(String toUserName, String fromUserName, long createTime, String msgType) {
@@ -57,5 +59,11 @@ public class Message{
 		MsgType = msgType;
 	}
 
+	public String getMsgId() {
+		return MsgId;
+	}
 
+	public void setMsgId(String msgId) {
+		MsgId = msgId;
+	}
 }
